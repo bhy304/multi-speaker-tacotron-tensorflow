@@ -66,10 +66,10 @@ def download_news_video_and_content(
 
     text = soupify(article_contents[0].text).get_text() # remove <div>
 
-    with open(original_text_path, "w") as f:
+    with open(original_text_path, "w",encoding='utf-8') as f:
         f.write(text)
 
-    with open(text_path, "w") as f:
+    with open(text_path, "w",encoding='utf-8') as f:
         from nltk import sent_tokenize
 
         text = re.sub(r'\[.{0,80} :\s.+]', '', text) # remove quote
@@ -135,10 +135,10 @@ if __name__ == '__main__':
 
             page_idx += 1
 
-        with open(news_id_path, "w") as f:
+        with open(news_id_path, "w",encoding='utf-8') as f:
             json.dump(news_ids, f, indent=2, ensure_ascii=False)
     else:
-        with open(news_id_path) as f:
+        with open(news_id_path,encoding='utf-8') as f:
             news_ids = json.loads(f.read())
 
     exceptions = ["NB10830162"]

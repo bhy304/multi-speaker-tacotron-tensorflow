@@ -103,7 +103,7 @@ def align_text_fn(
     news_path = os.path.splitext(news_path)[0] + ".txt"
 
     strip_fn = lambda line: line.strip().replace('"', '').replace("'", "")
-    candidates = [strip_fn(line) for line in open(news_path, encoding='cp949').readlines()]
+    candidates = [strip_fn(line) for line in open(news_path, encoding='utf-8').readlines()]
 
     scores = { candidate: similarity(candidate, recognition_text) \
                     for candidate in candidates}
